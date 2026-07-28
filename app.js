@@ -67,7 +67,7 @@ function noteMarkup(cx, cy, direction, value) {
     const stemTop = cy - 51.05;
     const stemBottom = cy - 2.0;
     stem = `<line x1="${stemX.toFixed(3)}" y1="${stemBottom.toFixed(3)}" x2="${stemX.toFixed(3)}" y2="${stemTop.toFixed(3)}" stroke="#111" stroke-width="1.276"/>`;
-    if (value === "eighth") flag = path(GLYPHS.flagUp, stemX + 0.37, stemTop, 0.056);
+    if (value === "eighth") flag = path(GLYPHS.flagUp, stemX + 0.366, stemTop, 0.056);
   } else {
     const stemX = cx - 8.268;
     const stemTop = cy + 51.05;
@@ -76,7 +76,7 @@ function noteMarkup(cx, cy, direction, value) {
     if (value === "eighth") flag = path(GLYPHS.flagDown, stemX - 0.64, stemTop, 0.056);
   }
 
-  return `${stem}${flag}${path(GLYPHS.head, headX, headY, 0.056)}`;
+  return `${flag}${stem}${path(GLYPHS.head, headX, headY, 0.056)}`;
 }
 
 function generateSvg() {
@@ -112,7 +112,7 @@ function generateSvg() {
   }
   const ledgers = ledgerYs.map(ly => `<line x1="${noteX - 14}" y1="${ly.toFixed(3)}" x2="${noteX + 14}" y2="${ly.toFixed(3)}" stroke="#111" stroke-width="1.2"/>`).join("");
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 ${viewY} ${width} ${height}" aria-hidden="true"><rect x="0" y="${viewY}" width="${width}" height="${height}" fill="white"/>${lines}${clefGraphic}${ledgers}${noteMarkup(noteX, y, direction, value)}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 ${viewY} ${width} ${height}" aria-hidden="true"><rect x="0" y="${viewY}" width="${width}" height="${height}" fill="white"/>${lines}${clefGraphic}${ledgers}${noteMarkup(noteX, y + 2, direction, value)}</svg>`;
 }
 
 function label(value) {
