@@ -112,7 +112,7 @@ function generateSvg() {
   }
   const ledgers = ledgerYs.map(ly => `<line x1="${noteX - 14}" y1="${ly.toFixed(3)}" x2="${noteX + 14}" y2="${ly.toFixed(3)}" stroke="#111" stroke-width="1.2"/>`).join("");
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 ${viewY} ${width} ${height}" aria-hidden="true"><rect x="0" y="${viewY}" width="${width}" height="${height}" fill="white"/>${lines}${clefGraphic}${ledgers}${noteMarkup(noteX, y, direction, value)}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 ${viewY} ${width} ${height}" aria-hidden="true"><rect x="0" y="${viewY}" width="${width}" height="${height}" fill="white"/>${lines}${clefGraphic}${ledgers}${noteMarkup(noteX, y + 2, direction, value)}</svg>`;
 }
 
 function label(value) {
